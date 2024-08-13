@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PousadaIomar.Behaviors"
+             x:Class="PousadaIomar.View.NewCompany"
+             Title="NewCompany">
+    <StackLayout Spacing="10">
+
+        <!-- Barra Superior -->
+        <Border Background="#1C242F" Stroke="Transparent" StrokeShape="RoundRectangle 22" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image 
+                    WidthRequest="17" 
+                    HeightRequest="17" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Grid.Column="0" 
+                    Source="backarrow.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackOnClick"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label 
+                    Text="Adicionar Empresa" 
+                    FontSize="17" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    TextColor="White" 
+                    FontFamily="Jaldi" 
+                    Grid.Column="1"/>
+            </Grid>
+        </Border>
+
+
+        <!-- Primeira Seção do Formulário: Nome, Razão Social, CNPJ -->
+        <StackLayout BackgroundColor="#1C242F" Padding="30" Spacing="15">
+            <Entry 
+                Placeholder="Nome *" 
+                FontSize="16" 
+                TextColor="#B3B3B3" 
+                PlaceholderColor="#B3B3B3"/>
+            
+            <Entry 
+                Placeholder="Razão Social *" 
+                FontSize="16" 
+                TextColor="#B3B3B3" 
+                PlaceholderColor="#B3B3B3"/>
+            
+            <Entry 
+                Placeholder="CNPJ *" 
+                FontSize="16" 
+                TextColor="#B3B3B3" 
+                PlaceholderColor="#B3B3B3">
+                
+                <Entry.Behaviors>
+                    <local:MaskedBehavior Mask="##.###.###/####-##"/>
+                </Entry.Behaviors>
+            </Entry>
+        </StackLayout>
+
+
+        <!-- Segunda Seção do Formulário: Endereço, Telefones -->
+        <StackLayout BackgroundColor="#1C242F" Padding="30" Spacing="15">
+            <!-- Telefones -->
+            <Grid ColumnDefinitions="*,*">
+                <Entry 
+                    Placeholder="Telefone 1" 
+                    FontSize="16" 
+                    TextColor="#B3B3B3" 
+                    PlaceholderColor="#B3B3B3" 
+                    Grid.Column="0">
+                    <Entry.Behaviors>
+                        <local:MaskedBehavior Mask="(##) #####-####"/>
+                    </Entry.Behaviors>
+                </Entry>
+                
+                <Entry 
+                    Placeholder="Telefone 2" 
+                    FontSize="16" 
+                    TextColor="#B3B3B3" 
+                    PlaceholderColor="#B3B3B3" 
+                    Grid.Column="1">
+                    <Entry.Behaviors>
+                        <local:MaskedBehavior Mask="(##) #####-####"/>
+                    </Entry.Behaviors>
+                </Entry>
+                
+            </Grid>
+            <!-- Email -->
+            <Entry 
+                Placeholder="Email" 
+                FontSize="16" 
+                TextColor="#B3B3B3" 
+                PlaceholderColor="#B3B3B3"/>
+            
+            <!-- Endereço -->
+            <Entry 
+                Placeholder="Endereço (Rua)" 
+                FontSize="16" 
+                TextColor="#B3B3B3" 
+                PlaceholderColor="#B3B3B3"/>
+            
+            <!-- Cidade, Estado, Bairro -->
+            <Grid ColumnDefinitions="*,*,*">
+                <Entry 
+                    Placeholder="Cidade" 
+                    FontSize="16" 
+                    TextColor="#B3B3B3" 
+                    PlaceholderColor="#B3B3B3" 
+                    Grid.Column="0"/>
+                
+                <Entry 
+                    Placeholder="Estado" 
+                    FontSize="16" 
+                    TextColor="#B3B3B3" 
+                    PlaceholderColor="#B3B3B3" 
+                    Grid.Column="1"/>
+                
+                <Entry 
+                    Placeholder="Bairro" 
+                    FontSize="16" 
+                    TextColor="#B3B3B3" 
+                    PlaceholderColor="#B3B3B3" 
+                    Grid.Column="2"/>
+            </Grid>
+        </StackLayout>
+
+        <!-- Botão de Salvar -->
+        <Button 
+            Text="Salvar" 
+            BackgroundColor="#E3BC3F" 
+            TextColor="#1C242F" 
+            FontSize="17"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,101 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PousadaIomar
+build_property.ProjectDir = C:\Users\PICHAU\source\repos\PousadaIomar\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/AccomodationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.AccomodationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AccomodationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AccomodationPage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/CompaniesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.CompaniesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\CompaniesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\CompaniesPage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/EditCompany.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.EditCompany.xaml
+build_metadata.AdditionalFiles.TargetPath = View\EditCompany.xaml
+build_metadata.AdditionalFiles.RelativePath = View\EditCompany.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/EditPerson.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.EditPerson.xaml
+build_metadata.AdditionalFiles.TargetPath = View\EditPerson.xaml
+build_metadata.AdditionalFiles.RelativePath = View\EditPerson.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/FinancesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.FinancesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\FinancesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\FinancesPage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/GuestsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.GuestsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\GuestsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\GuestsPage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\HomePage.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/NewCompany.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.NewCompany.xaml
+build_metadata.AdditionalFiles.TargetPath = View\NewCompany.xaml
+build_metadata.AdditionalFiles.RelativePath = View\NewCompany.xaml
+
+[C:/Users/PICHAU/source/repos/PousadaIomar/View/NewPerson.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PousadaIomar.View.NewPerson.xaml
+build_metadata.AdditionalFiles.TargetPath = View\NewPerson.xaml
+build_metadata.AdditionalFiles.RelativePath = View\NewPerson.xaml

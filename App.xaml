@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PousadaIomar.View"
+             x:Class="PousadaIomar.App">
+    <Application.MainPage>
+        <NavigationPage>
+            <x:Arguments>
+                <local:AccomodationPage />
+            </x:Arguments>
+        </NavigationPage>
+    </Application.MainPage>
+</Application>
