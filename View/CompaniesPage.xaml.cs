@@ -1,3 +1,5 @@
+using PousadaIomar.Interfaces;
+
 namespace PousadaIomar.View;
 
 public partial class CompaniesPage : ContentPage
@@ -5,7 +7,7 @@ public partial class CompaniesPage : ContentPage
 	public CompaniesPage()
 	{
 		InitializeComponent();
-	}
+    }
 
     private void AddCompany(object sender, EventArgs e)
     {

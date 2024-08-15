@@ -4,6 +4,7 @@ namespace PousadaIomar.Interfaces;
 
 public interface IPersonRepository
 {
+    Task InitializeAsync();
     Task<int> AddAsync(Person person);
     Task<int> DeleteAsync(Person person);
     Task<int> UpdateAsync(Person person);

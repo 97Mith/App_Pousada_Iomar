@@ -1,10 +1,16 @@
+using PousadaIomar.Interfaces;
+using PousadaIomar.ViewModels;
+
 namespace PousadaIomar.View;
 
 public partial class HomePage : TabbedPage
 {
-	public HomePage()
+    private readonly ICompanyRepository _companyRepository;
+	public HomePage(ICompanyRepository company)
 	{
 		InitializeComponent();
+        _companyRepository = company;
+        BindingContext = new CompanyViewModel(_companyRepository);
 
 		var page1 = new AccomodationPage()
 		{

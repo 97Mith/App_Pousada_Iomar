@@ -4,6 +4,7 @@ namespace PousadaIomar.Interfaces;
 
 public interface ICompanyRepository
 {
+    Task InitializeAsync();
     Task<int> AddAsync(Company company);
     Task<int> DeleteAsync(Company company);
     Task<int> UpdateAsync(Company company);
