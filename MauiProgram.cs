@@ -16,27 +16,15 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            })
-            .CreateMauiAppBuilder();
+            });
 
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<ICompanyRepository, CompanyRepository>();
+        builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
 
         return builder.Build();
     }
 
-    public static MauiAppBuilder CreateMauiAppBuilder(this MauiAppBuilder maui)
-    {
-        maui.Services.AddSingleton<SQLiteAsyncConnection>(
-            o =>
-            {
-                return new SQLiteAsyncConnection($"FileName={AppSettings.DatabasePath};Connection=Shared");
-            }
-            );
-        maui.Services.AddTransient<ICompanyRepository, CompanyRepository>();
-        maui.Services.AddTransient<IPersonRepository, PersonRepository>();
-
-        return maui;
-    }
 }

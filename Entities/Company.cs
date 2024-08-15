@@ -1,95 +1,51 @@
-﻿using PousadaIomar.Entities.ValueObjects;
+﻿using SQLite;
 
 namespace PousadaIomar.Entities;
 
-public sealed class Company : Base
+[Table("Companies")]
+public class Company : Base
 {
-    public Name CoReason { get; private set; }
-    public Cnpj Cnpj { get; private set; }
-    public Address Address { get; private set; }
-    public string PhoneNumber1 { get; private set; }
-    public string PhoneNumber2 { get; private set; }
-    public string PhoneNumber3 { get; private set; }
-    public string Email { get; private set; }
-    public ICollection<Person> Employees { get; set; }
-    public Company()
-    {
+    [NotNull, MaxLength(120)]
+    public string CorporateReason { get; set; }
 
-    }
+    [NotNull, MaxLength(20)]
+    public string Cnpj { get; set; }
 
-    public Company(int id, Name name, Name coReason, Cnpj cnpj, Address? address, string pn1, string? pn2, string? pn3, string? email)
-    {
-        ExceptionValidation.When(id < 0, "Invalid ID");
-        Id = id;
-        Name = name;
-        CoReason = coReason;
-        Cnpj = cnpj;
-        Address = address;
-        PhoneNumber1 = pn1;
-        PhoneNumber2 = pn2;
-        PhoneNumber3 = pn3;
-        Email = email;
+    [MaxLength(15)]
+    public string PhoneNumber1 { get; set; }
 
-    }
-    public Company(Name name, Name coReason, Cnpj cnpj, Address? address, string pn1, string? pn2, string? pn3, string? email)
-    {
-        Name = name;
-        CoReason = coReason;
-        Cnpj = cnpj;
-        Address = address;
-        PhoneNumber1 = pn1;
-        PhoneNumber2 = pn2;
-        PhoneNumber3 = pn3;
-        Email = email;
-    }
+    [MaxLength(15)]
+    public string PhoneNumber2 { get; set; }
 
-    public void UpdateName(Name name)
+    [MaxLength(75)]
+    public string Email { get; set; }
+
+
+    //Address, criar classe ou VO depois
+    // . . . . . . . . . . . . . . . . . . . . 
+    [MaxLength(100)]
+    private string Street { get; set; }
+
+    [MaxLength(20)]
+    private string City { get; set; }
+
+    [MaxLength(20)]
+    private string State { get; set; }
+
+    // . . . . . . . . . . . . . . . . . . . . 
+
+    public Company() { }
+
+    public Company(string name, string corporateReason, string cnpj, string? phoneNumber1, string? phoneNumber2, string? email, string? street, string? city, string state)
     {
         Name = name;
-    }
-    public void UpdateCoReason(Name coReason)
-    {
-        CoReason = coReason;
-    }
-
-    public void UpdateCnpj(Cnpj cnpj)
-    {
+        CorporateReason = corporateReason;
         Cnpj = cnpj;
+        PhoneNumber1 = phoneNumber1 ?? string.Empty;
+        PhoneNumber2 = phoneNumber2 ?? string.Empty;
+        Email = email ?? string.Empty;
+        Street = street ?? string.Empty;
+        City = city ?? string.Empty;
+        State = state ?? string.Empty;
     }
-
-    public void UpdateAddress(Address address)
-    {
-        Address = address;
-    }
-
-    public void UpdatePhoneNumber1(string pn1)
-    {
-        PhoneNumber1 = pn1;
-    }
-
-    public void UpdatePhoneNumber2(string pn2)
-    {
-        PhoneNumber2 = pn2;
-    }
-
-    public void UpdatePhoneNumber3(string pn3)
-    {
-        PhoneNumber3 = pn3;
-    }
-
-    public void UpdateEmail(string email)
-    {
-        Email = email;
-    }
-
-    public void AddEmployee(Person employee)
-    {
-        Employees.Add(employee);
-    }
-
-    public void RemoveEmployee(Person employee)
-    {
-        Employees.Remove(employee);
-    }
-
 }

@@ -6,12 +6,26 @@ namespace PousadaIomar.Repositories;
 
 public class PersonRepository : IPersonRepository
 {
-    private readonly SQLiteAsyncConnection _connection;
-
-    public PersonRepository(SQLiteAsyncConnection dbPath)
+    private SQLiteAsyncConnection _connection;
+    public async Task InitializeAsync()
     {
-        _connection = dbPath;
-        _connection.CreateTableAsync<Person>().Wait();
+        await SetUpDb();
+    }
+
+    private async Task SetUpDb()
+    {
+        if (_connection == null)
+        {
+            string dbPath = Path.Combine(Environment
+                .GetFolderPath(
+                Environment
+                .SpecialFolder
+                .LocalApplicationData),
+                "dbPath.db1");
+
+            _connection = new SQLiteAsyncConnection(dbPath);
+            await _connection.CreateTableAsync<Company>();
+        }
     }
 
     public Task<List<Person>> GetAllAsync()
@@ -42,7 +56,7 @@ public class PersonRepository : IPersonRepository
     public async Task<List<Person>> GetByNameAsync(string name)
     {
         var allPersons = await _connection.Table<Person>().ToListAsync();
-        return allPersons.Where(p => p.Name.Value.Contains(name)).ToList();
+        return allPersons.Where(p => p.Name.Contains(name)).ToList();
     }
 
     public Task<List<Person>> GetByCompanyAsync(int companyId)

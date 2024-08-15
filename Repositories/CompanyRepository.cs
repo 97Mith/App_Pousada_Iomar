@@ -6,13 +6,26 @@ namespace PousadaIomar.Repositories;
 
 public class CompanyRepository : ICompanyRepository
 {
-    private readonly SQLiteAsyncConnection _connection;
-
-
-    public CompanyRepository(SQLiteAsyncConnection dbPath)
+    private SQLiteAsyncConnection _connection;
+    public async Task InitializeAsync()
     {
-        _connection = dbPath;
-        _connection.CreateTableAsync<Company>().Wait();
+        await SetUpDb();
+    }
+
+    private async Task SetUpDb()
+    {
+        if(_connection == null)
+        {
+            string dbPath = Path.Combine(Environment
+                .GetFolderPath(
+                Environment
+                .SpecialFolder
+                .LocalApplicationData),
+                "dbPath.db1");
+
+            _connection = new SQLiteAsyncConnection (dbPath);
+            await _connection.CreateTableAsync<Company>();
+        }
     }
 
     public Task<List<Company>> GetAllAsync()
@@ -44,6 +57,6 @@ public class CompanyRepository : ICompanyRepository
     public async Task<List<Company>> GetByNameAsync(string name)
     {
         var allCompanies = await GetAllAsync();
-        return allCompanies.Where(c => c.Name.Value.Contains(name)).ToList();
+        return allCompanies.Where(c => c.Name.Contains(name)).ToList();
     }
 }
