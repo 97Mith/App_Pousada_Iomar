@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
 
 namespace PousadaIomar.ViewModels
 {
@@ -16,12 +17,16 @@ namespace PousadaIomar.ViewModels
         [ObservableProperty]
         private Company _company;
 
+        [ObservableProperty]
+        private bool _isRefreshing;
+
         public ICommand AddCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand DisplayCommand { get; set; }
         public ICommand DisplayByIdCommand { get; set; }
         public ICommand DisplayByNameCommand { get; set; }
+        public ICommand RefreshCommand { get; set; }
 
         private readonly ICompanyRepository _companyRepository;
         private readonly INavigation _navigation;
@@ -39,11 +44,12 @@ namespace PousadaIomar.ViewModels
             Company = new Company();
 
             AddCommand = new Command(async () => await AddCompany());
-            DeleteCommand = new Command(async () => await DeleteCompany());
+            DeleteCommand = new Command<Company>(async (company) => await DeleteCompany(company));
             UpdateCommand = new Command(async () => await UpdateCompany());
             DisplayCommand = new Command(async () => await DisplayCompanies());
             DisplayByIdCommand = new Command<int>(async (id) => await DisplayCompanyById(id));
             DisplayByNameCommand = new Command<string>(async (name) => await DisplayCompaniesByName(name));
+            RefreshCommand = new Command(async () => await Refresh());
 
             LoadCompanies();
         }
@@ -56,10 +62,10 @@ namespace PousadaIomar.ViewModels
             await _navigation.PopModalAsync();
         }
 
-        private async Task DeleteCompany()
+        private async Task DeleteCompany(Company company)
         {
             await _companyRepository.InitializeAsync();
-            await _companyRepository.DeleteAsync(Company);
+            await _companyRepository.DeleteAsync(company);
             await Refresh();
         }
 
@@ -100,7 +106,9 @@ namespace PousadaIomar.ViewModels
 
         private async Task Refresh()
         {
+            IsRefreshing = true;
             await DisplayCompanies();
+            IsRefreshing = false;
         }
 
         private async void LoadCompanies()

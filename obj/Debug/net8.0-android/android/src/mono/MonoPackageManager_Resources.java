@@ -3,7 +3,12 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "PousadaIomar.dll" comes first in this list. */
 		"PousadaIomar.dll",
+		"CommunityToolkit.Mvvm.dll",
 		"GoogleGson.dll",
+		"Microsoft.EntityFrameworkCore.dll",
+		"Microsoft.EntityFrameworkCore.Abstractions.dll",
+		"Microsoft.Extensions.Caching.Abstractions.dll",
+		"Microsoft.Extensions.Caching.Memory.dll",
 		"Microsoft.Extensions.Configuration.dll",
 		"Microsoft.Extensions.Configuration.Abstractions.dll",
 		"Microsoft.Extensions.DependencyInjection.dll",
@@ -23,7 +28,9 @@ public class MonoPackageManager_Resources {
 		"SQLitePCLRaw.batteries_v2.dll",
 		"SQLitePCLRaw.core.dll",
 		"SQLitePCLRaw.lib.e_sqlite3.android.dll",
+		"SQLitePCLRaw.provider.dynamic_cdecl.dll",
 		"SQLitePCLRaw.provider.e_sqlite3.dll",
+		"SQLitePCLRaw.provider.sqlite3.dll",
 		"Xamarin.Android.Glide.dll",
 		"Xamarin.Android.Glide.Annotations.dll",
 		"Xamarin.Android.Glide.DiskLruCache.dll",

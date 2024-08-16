@@ -10,7 +10,6 @@ public partial class HomePage : TabbedPage
 	{
 		InitializeComponent();
         _companyRepository = company;
-        BindingContext = new CompanyViewModel(_companyRepository, Navigation);
 
 		var page1 = new AccomodationPage()
 		{
