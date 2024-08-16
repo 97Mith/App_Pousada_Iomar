@@ -17,7 +17,7 @@
                     <DataTemplate>
                         <!-- SwipeView to enable swipe-to-delete functionality -->
                         <SwipeView>
-                            <SwipeView.RightItems>
+                            <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem
                                         Text="Delete"
@@ -25,7 +25,7 @@
                                         Command="{Binding BindingContext.DeleteCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                                         CommandParameter="{Binding .}" />
                                 </SwipeItems>
-                            </SwipeView.RightItems>
+                            </SwipeView.LeftItems>
                             <Frame Margin="3" HeightRequest="75" BackgroundColor="#D9D9D9" CornerRadius="18" Padding="10" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.EditCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" CommandParameter="{Binding .}"/>
@@ -47,5 +47,16 @@
         <!-- Button fixed at the bottom right corner -->
         <Button Text="+" BackgroundColor="#E5A000" Clicked="AddCompany" WidthRequest="60" HeightRequest="60" CornerRadius="30"
                 HorizontalOptions="End" VerticalOptions="End" Margin="10" />
+
+        <!-- Conditional content for Windows only using OnPlatform -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+            <OnPlatform x:TypeArguments="View">
+                <On Platform="WinUI">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                        <Button Text="Refresh" Command="{Binding RefreshCommand}" Margin="5"/>
+                    </StackLayout>
+                </On>
+            </OnPlatform>
+        </StackLayout>
     </Grid>
 </ContentPage>
