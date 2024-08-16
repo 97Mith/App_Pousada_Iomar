@@ -5,8 +5,8 @@ namespace PousadaIomar.Entities;
 public abstract class Base
 {
     [PrimaryKey, AutoIncrement]
-    public int Id { get; protected set; }
+    public int Id { get; set; }
     
     [NotNull, MaxLength(50)]
-    public string Name { get; protected set; }
+    public string Name { get; set; }
 }

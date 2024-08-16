@@ -20,19 +20,14 @@ public class Company : Base
     [MaxLength(75)]
     public string Email { get; set; }
 
-
-    //Address, criar classe ou VO depois
-    // . . . . . . . . . . . . . . . . . . . . 
     [MaxLength(100)]
-    private string Street { get; set; }
+    public string Street { get; set; }
 
     [MaxLength(20)]
-    private string City { get; set; }
+    public string City { get; set; }
 
     [MaxLength(20)]
-    private string State { get; set; }
-
-    // . . . . . . . . . . . . . . . . . . . . 
+    public string State { get; set; }
 
     public Company() { }
 

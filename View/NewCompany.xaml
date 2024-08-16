@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PousadaIomar.Behaviors"
+             xmlns:viewModels="clr-namespace:PousadaIomar.ViewModels"
              x:Class="PousadaIomar.View.NewCompany"
              Title="NewCompany">
+    <ContentPage.BindingContext>
+        <viewModels:CompanyViewModel/>
+    </ContentPage.BindingContext>
+
     <StackLayout Spacing="10">
 
         <!-- Barra Superior -->
@@ -41,23 +46,29 @@
         <!-- Primeira Seção do Formulário: Nome, Razão Social, CNPJ -->
         <StackLayout BackgroundColor="#1C242F" Padding="30" Spacing="15">
             <Entry 
+                x:Name="EntryName"
                 Placeholder="Nome *" 
                 FontSize="16" 
                 TextColor="#B3B3B3" 
-                PlaceholderColor="#B3B3B3"/>
-            
-            <Entry 
+                PlaceholderColor="#B3B3B3"
+                Text="{Binding Company.Name, Mode=TwoWay}"/>
+
+            <Entry
+                x:Name="EntryCr"
                 Placeholder="Razão Social *" 
                 FontSize="16" 
                 TextColor="#B3B3B3" 
-                PlaceholderColor="#B3B3B3"/>
-            
+                PlaceholderColor="#B3B3B3"
+                Text="{Binding Company.CorporateReason, Mode=TwoWay}"/>
+
             <Entry 
+                x:Name="EntryCnpj"
                 Placeholder="CNPJ *" 
                 FontSize="16" 
                 TextColor="#B3B3B3" 
-                PlaceholderColor="#B3B3B3">
-                
+                PlaceholderColor="#B3B3B3"
+                Text="{Binding Company.Cnpj, Mode=TwoWay}">
+
                 <Entry.Behaviors>
                     <local:MaskedBehavior Mask="##.###.###/####-##"/>
                 </Entry.Behaviors>
@@ -74,38 +85,42 @@
                     FontSize="16" 
                     TextColor="#B3B3B3" 
                     PlaceholderColor="#B3B3B3" 
-                    Grid.Column="0">
+                    Grid.Column="0"
+                    Text="{Binding Company.PhoneNumber1, Mode=TwoWay}">
                     <Entry.Behaviors>
                         <local:MaskedBehavior Mask="(##) #####-####"/>
                     </Entry.Behaviors>
                 </Entry>
-                
+
                 <Entry 
                     Placeholder="Telefone 2" 
                     FontSize="16" 
                     TextColor="#B3B3B3" 
                     PlaceholderColor="#B3B3B3" 
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    Text="{Binding Company.PhoneNumber2, Mode=TwoWay}">
                     <Entry.Behaviors>
                         <local:MaskedBehavior Mask="(##) #####-####"/>
                     </Entry.Behaviors>
                 </Entry>
-                
+
             </Grid>
             <!-- Email -->
             <Entry 
                 Placeholder="Email" 
                 FontSize="16" 
                 TextColor="#B3B3B3" 
-                PlaceholderColor="#B3B3B3"/>
-            
+                PlaceholderColor="#B3B3B3"
+                Text="{Binding Company.Email, Mode=TwoWay}"/>
+
             <!-- Endereço -->
             <Entry 
                 Placeholder="Endereço (Rua)" 
                 FontSize="16" 
                 TextColor="#B3B3B3" 
-                PlaceholderColor="#B3B3B3"/>
-            
+                PlaceholderColor="#B3B3B3"
+                Text="{Binding Company.Street, Mode=TwoWay}"/>
+
             <!-- Cidade, Estado, Bairro -->
             <Grid ColumnDefinitions="*,*,*">
                 <Entry 
@@ -113,21 +128,16 @@
                     FontSize="16" 
                     TextColor="#B3B3B3" 
                     PlaceholderColor="#B3B3B3" 
-                    Grid.Column="0"/>
-                
+                    Grid.Column="0"
+                    Text="{Binding Company.City, Mode=TwoWay}"/>
+
                 <Entry 
                     Placeholder="Estado" 
                     FontSize="16" 
                     TextColor="#B3B3B3" 
                     PlaceholderColor="#B3B3B3" 
-                    Grid.Column="1"/>
-                
-                <Entry 
-                    Placeholder="Bairro" 
-                    FontSize="16" 
-                    TextColor="#B3B3B3" 
-                    PlaceholderColor="#B3B3B3" 
-                    Grid.Column="2"/>
+                    Grid.Column="1"
+                    Text="{Binding Company.State, Mode=TwoWay}"/>
             </Grid>
         </StackLayout>
 
@@ -136,6 +146,7 @@
             Text="Salvar" 
             BackgroundColor="#E3BC3F" 
             TextColor="#1C242F" 
-            FontSize="17"/>
+            FontSize="17"
+            Command="{Binding AddCommand}"/>
     </StackLayout>
 </ContentPage>

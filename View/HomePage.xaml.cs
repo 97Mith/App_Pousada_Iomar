@@ -10,7 +10,7 @@ public partial class HomePage : TabbedPage
 	{
 		InitializeComponent();
         _companyRepository = company;
-        BindingContext = new CompanyViewModel(_companyRepository);
+        BindingContext = new CompanyViewModel(_companyRepository, Navigation);
 
 		var page1 = new AccomodationPage()
 		{
@@ -24,7 +24,7 @@ public partial class HomePage : TabbedPage
             IconImageSource = "personicon.svg"
         };
 
-        var page3 = new CompaniesPage()
+        var page3 = new CompaniesPage(_companyRepository)
         {
             Title = "Empresas",
             IconImageSource = "companyicon.svg"

@@ -27,6 +27,11 @@ public class CompanyRepository : ICompanyRepository
             await _connection.CreateTableAsync<Company>();
         }
     }
+    public async Task ResetDatabaseAsync()
+    {
+        await _connection.DropTableAsync<Company>();
+        await _connection.CreateTableAsync<Company>();
+    }
 
     public Task<List<Company>> GetAllAsync()
     {

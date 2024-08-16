@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PousadaIomar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+07fecfcfc337cdc18cbd539a1d8ae7e0c30545b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+3a3829883db3d15b40c28ca68973004ad29aeab3")]
 [assembly: System.Reflection.AssemblyProductAttribute("PousadaIomar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PousadaIomar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

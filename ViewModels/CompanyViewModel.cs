@@ -1,79 +1,111 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PousadaIomar.Entities;
 using PousadaIomar.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
-namespace PousadaIomar.ViewModels;
-
-public partial class CompanyViewModel : ObservableObject
+namespace PousadaIomar.ViewModels
 {
-    [ObservableProperty]
-    private List<Company> _companies;
-
-    [ObservableProperty]
-    private Company _company;
-
-    public ICommand AddCommand { get; set; }
-    public ICommand DeleteCommand { get; set; }
-    public ICommand UpdateCommand { get; set; }
-    public ICommand DisplayCommand { get; set; }
-    public ICommand DisplayByIdCommand { get; set; }
-    public ICommand DisplayByNameCommand { get; set; }
-
-    public CompanyViewModel(ICompanyRepository companyRepository)
+    public partial class CompanyViewModel : ObservableObject
     {
-        Company = new Company();
+        [ObservableProperty]
+        private ObservableCollection<Company> _companies;
 
-        AddCommand = new Command(async () => await AddCompany(companyRepository));
-        DeleteCommand = new Command(async () => await DeleteCompany(companyRepository));
-        UpdateCommand = new Command(async () => await UpdateCompany(companyRepository));
-        DisplayCommand = new Command(async () => await DisplayCompanies(companyRepository));
-        DisplayByIdCommand = new Command<int>(async (id) => await DisplayCompanyById(companyRepository, id));
-        DisplayByNameCommand = new Command<string>(async (name) => await DisplayCompaniesByName(companyRepository, name));
-    }
+        [ObservableProperty]
+        private Company _company;
 
-    private async Task AddCompany(ICompanyRepository companyRepository)
-    {
-        await companyRepository.InitializeAsync();
-        await companyRepository.AddAsync(Company);
-        await Refresh(companyRepository);
-    }
+        public ICommand AddCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand DisplayCommand { get; set; }
+        public ICommand DisplayByIdCommand { get; set; }
+        public ICommand DisplayByNameCommand { get; set; }
 
-    private async Task DeleteCompany(ICompanyRepository companyRepository)
-    {
-        await companyRepository.InitializeAsync();
-        await companyRepository.DeleteAsync(Company);
-        await Refresh(companyRepository);
-    }
+        private readonly ICompanyRepository _companyRepository;
+        private readonly INavigation _navigation;
 
-    private async Task UpdateCompany(ICompanyRepository companyRepository)
-    {
-        await companyRepository.InitializeAsync();
-        await companyRepository.UpdateAsync(Company);
-        await Refresh(companyRepository);
-    }
+        public CompanyViewModel()
+        {
+            
+        }
 
-    private async Task DisplayCompanies(ICompanyRepository companyRepository)
-    {
-        await companyRepository.InitializeAsync();
-        Companies = await companyRepository.GetAllAsync();
-    }
+        public CompanyViewModel(ICompanyRepository companyRepository, INavigation navigation)
+        {
+            _companyRepository = companyRepository;
+            _navigation = navigation;
+            Companies = new ObservableCollection<Company>();
+            Company = new Company();
 
-    private async Task DisplayCompanyById(ICompanyRepository companyRepository, int id)
-    {
-        await companyRepository.InitializeAsync();
-        Company = await companyRepository.GetByIdAsync(id);
-    }
+            AddCommand = new Command(async () => await AddCompany());
+            DeleteCommand = new Command(async () => await DeleteCompany());
+            UpdateCommand = new Command(async () => await UpdateCompany());
+            DisplayCommand = new Command(async () => await DisplayCompanies());
+            DisplayByIdCommand = new Command<int>(async (id) => await DisplayCompanyById(id));
+            DisplayByNameCommand = new Command<string>(async (name) => await DisplayCompaniesByName(name));
 
-    private async Task DisplayCompaniesByName(ICompanyRepository companyRepository, string name)
-    {
-        await companyRepository.InitializeAsync();
-        Companies = await companyRepository.GetByNameAsync(name);
-    }
+            LoadCompanies();
+        }
 
-    private async Task Refresh(ICompanyRepository companyRepository)
-    {
-        Companies = await companyRepository.GetAllAsync();
+        private async Task AddCompany()
+        {
+            await _companyRepository.InitializeAsync();
+            await _companyRepository.AddAsync(Company);
+            await Refresh();
+            await _navigation.PopModalAsync();
+        }
+
+        private async Task DeleteCompany()
+        {
+            await _companyRepository.InitializeAsync();
+            await _companyRepository.DeleteAsync(Company);
+            await Refresh();
+        }
+
+        private async Task UpdateCompany()
+        {
+            await _companyRepository.InitializeAsync();
+            await _companyRepository.UpdateAsync(Company);
+            await Refresh();
+        }
+
+        private async Task DisplayCompanies()
+        {
+            await _companyRepository.InitializeAsync();
+            var companies = await _companyRepository.GetAllAsync();
+            Companies.Clear();
+            foreach (var company in companies)
+            {
+                Companies.Add(company);
+            }
+        }
+
+        private async Task DisplayCompanyById(int id)
+        {
+            await _companyRepository.InitializeAsync();
+            Company = await _companyRepository.GetByIdAsync(id);
+        }
+
+        private async Task DisplayCompaniesByName(string name)
+        {
+            await _companyRepository.InitializeAsync();
+            var companies = await _companyRepository.GetByNameAsync(name);
+            Companies.Clear();
+            foreach (var company in companies)
+            {
+                Companies.Add(company);
+            }
+        }
+
+        private async Task Refresh()
+        {
+            await DisplayCompanies();
+        }
+
+        private async void LoadCompanies()
+        {
+            await DisplayCompanies();
+        }
     }
 }
-
